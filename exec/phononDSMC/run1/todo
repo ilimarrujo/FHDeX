@@ -1,0 +1,4 @@
+rm totalparts*
+rm -rf plt0*
+rm -rf pltcu*
+mpiexec -n 1 ./main3d.gnu.MPI.CUDA.ex input_alignedArray_newTAU prob_lo = -0.0008201 -0.00037299999999999996 0.0 prob_hi =  0.0008201  0.00037299999999999996 0.00001 | tee out.data 

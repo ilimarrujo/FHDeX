@@ -1,0 +1,60 @@
+ # Problem specification
+  prob_lo = -0.00079875 -0.00020999999999999998 0.0     			 	# physical lo coordinate
+  prob_hi =  0.00079875  0.00020999999999999998 0.00001	# physical hi coordinate (cm)
+
+  n_cells = 512 512 16 # grid that data is recorded on
+  max_grid_size = 256 256 16 # mpi rank
+  max_particle_tile_size = 256 256 256 
+
+  #Time-step control
+  #### For Heat Flow plots #####
+  fixed_dt = 5e-13 # calculated from phonon traveling speed, make sure phonon doesnt travel too long per dt
+  ## Controls for number of steps between actions
+  max_step =     20000000
+  plot_int =     10000 
+  n_steps_skip = -10000 # statistical steady state determinator
+  
+  ##### For phonon animation #####
+ # fixed_dt = 5e-12
+ # max_step =     2000
+ # plot_int =     5
+ # n_steps_skip = -5 # statistical steady state determinator
+  # positive: starting from n_steps_skip, do average 
+  # negative: every n_steps_skip, do average of the previous n_steps_skip
+  
+  # ignore following 3 lines
+  reset_stats = 1
+  restart  = -1
+  chk_int  = -1
+
+  particle_neff = 1
+
+particle_count = 0 0
+
+  #Species info
+  #--------------
+  nspecies   		=  2
+  phonon_sound_speed = 600000 # cm/s; cgs 
+  
+  #Internal scattering parameters
+  #-------------------
+  tau_i = 0.339e45 # 1/(2.95e-45)
+  tau_ta = 0.1075e13 # transverse
+  tau_la = 0.5e24 # longitudinal
+
+  
+  # Stochastic parameters
+  seed    = 1
+  k_B     = 1.38064852e-16
+  T_init  = 0.02 # temperature to determine internal scattering
+  h_bar   = 1.0546e-27
+  # variance_coef_mom = 1 # noise scaling param
+
+#ignore these for now
+  bc_vel_lo   = -1 -1 -1
+  bc_vel_hi   = -1 -1 -1  
+  bc_therm_lo = -1 -1 -1
+  bc_therm_hi = -1 -1 -1
+  bc_mass_lo  = -1 -1 -1
+  bc_mass_hi  = -1 -1 -1
+  
